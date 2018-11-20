@@ -1,0 +1,112 @@
+<div class="container">
+
+    <div class="searchshow">
+
+        <div class="row">
+
+
+            <div class="col-sm-6 ">
+                <img class="whitelogo" src="../../assets/images/Horizontal-Logo_White.png">
+
+            </div>
+            <div class="col-sm-6 ">
+                <img class="crosslogo" (click)="closesearch()" src="../../assets/images/whitecross.png">
+
+            </div>
+
+
+
+        </div>
+
+        <div class="container text-center  ">
+            <button class="searchbuttons margintp " style="    border: none;" (click)="routeToLogin()"> Login </button>
+            <button class="searchbuttons margintp bordernone  "> Register </button>
+            <!-- <hr> -->
+
+
+
+
+            <div class="text-center">
+                <form [formGroup]="myForm" novalidate (ngSubmit)="register()">
+                    <fieldset formGroupName="name">
+                        <input type="text" class="getInspiredInput" placeholder="Firstname" formControlName="firstName"
+                            [ngStyle]="{
+                    'border-bottom': firstName.invalid && (firstName.dirty || firstName.touched  )  ? '1px solid red' : '1px solid white' }">
+                        <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                            <p class="errorText" *ngIf="firstName.errors.required">Firstname is required</p>
+
+                        </div>
+
+                        <input type="text" class="getInspiredInput" placeholder="Lastname" formControlName="lastName"
+                            [ngStyle]="{
+                    'border-bottom': lastName.invalid && (lastName.dirty || lastName.touched  )  ? '1px solid red' : '1px solid white' }">
+                        <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+                            <p class="errorText" *ngIf="lastName.errors.required">Lastname is required</p>
+
+                        </div>
+
+
+                    </fieldset>
+
+                    <input type="email" class="getInspiredInput" placeholder="Email" formControlName="email" [ngStyle]="{
+                        'border-bottom': email.invalid && (email.dirty || email.touched  )  ? '1px solid red' : '1px solid white' }">
+
+
+
+                    <input type="text" class="getInspiredInput" placeholder="Mobile Number" formControlName="number"
+                        [ngStyle]="{
+                          'border-bottom': number.invalid && (number.dirty || email.touched  )  ? '1px solid red' : '1px solid white' }">
+                    <div *ngIf="number.errors && (number.dirty || number.touched ) ">
+                        <p *ngIf="number.errors.required" class="errorText"> Mobile Number is required </p>
+                        <p class="errorText" *ngIf="number.errors.minlength">Mobile Number must contain atleast 10
+                            numbers</p>
+                        <p class="errorText" *ngIf="number.errors.maxlength">Mobile Number must be less than 10 numbers</p>
+
+
+                    </div>
+                    <fieldset formGroupName="password">
+                        <input type="password" class="getInspiredInput" placeholder="Password" formControlName="password1"
+                            [ngStyle]="{
+                          'border-bottom': password1.invalid && (password1.dirty || password1.touched  )  ? '1px solid red' : '1px solid white' }">
+                        <div *ngIf="password1.errors && (password1.dirty || password1.touched)">
+                            <p class="errorText" *ngIf="password1.errors.required">Password is required</p>
+                            <p class="errorText" *ngIf="password1.errors.minlength">Password must be 5 characters long</p>
+                        </div>
+
+                        <input type="password" class="getInspiredInput" placeholder="Confirm Password" formControlName="password2"
+                            [ngStyle]="{
+                              'border-bottom': password2.invalid && (password2.dirty || password2.touched  )  ? '1px solid red' : '1px solid white' }">
+                        <div *ngIf="password2.errors && (password2.dirty || password2.touched)">
+                            <p class="errorText" *ngIf="password2.errors.required">Password is required</p>
+                            <p class="errorText" *ngIf="password2.errors.matchOther">Please match both the Passwords</p>
+
+                        </div>
+
+
+                    </fieldset>
+
+
+                    <!-- <input type="password" class="getInspiredInput" placeholder="Retype Password" formControlName="password2"   > -->
+
+
+                    <!-- <pre> {{myForm.value | json}}</pre> -->
+                    <div class="text-center " style="margin-left:164px;margin-top: 9px;">
+                    </div>
+
+
+                    <div class="text-center">
+                        <p class="errorText text-center" *ngIf="notvalid">Please fill all the Details</p>
+                        <button type="submit" class="searchbuttons margintp"> Submit</button>
+                    </div>
+                </form>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+</div>
